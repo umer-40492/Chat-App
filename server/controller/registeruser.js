@@ -6,7 +6,7 @@ async function registerUser(req, res){
         const checkEmail =  await userModel.findOne({email});
 
         if(checkEmail){
-            return message.status(400).json({
+            return res.status(400).json({
                 message: "email Already exist",
                 error: true
             })

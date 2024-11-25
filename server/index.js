@@ -1,15 +1,14 @@
 const express = require("express");
 const cors = require("cors");
-require("dotenv").config();
+require('dotenv').config(); 
 const connectDB = require("./config/connectdb");
 const router = require("./routes/index")
 const app = express();
 const cookiesParser = require("cookie-parser");
 app.use(cors({
-    origin: process.env.FRONTEND_URL,
-    credentials: true
-}))
-
+    origin: process.env.FRONTEND_URL, // Allow the frontend URL
+    credentials: true, // Allow cookies and authorization headers
+}));
 const port = process.env.PORT || 8080;
 app.get('/', (req, res)=>{
     res.json({
