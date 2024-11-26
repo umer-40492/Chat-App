@@ -5,6 +5,7 @@ const checkPassword = require("../controller/checkpassword");
 const userDetail = require("../controller/userdetail");
 const logout = require("../controller/logout");
 const userUpdateDetail = require("../controller/updateUserDetail");
+const searchUser = require("../controller/searchUser");
 const router = express.Router();
 
 //create user API
@@ -19,5 +20,6 @@ router.get('/user-detail', userDetail);
 router.get('/logout', logout);
 //update user 
 router.post('/update-user', userUpdateDetail)
-
+//search user
+router.post('/search-user', searchUser)
 module.exports = router;

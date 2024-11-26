@@ -7,7 +7,7 @@ import toast from 'react-hot-toast';
 // import { PiUserCircle } from "react-icons/pi";
 import Avatar from '../components/Avatar';
 import { useDispatch } from 'react-redux';
-import { setToken, setUser } from '../redux/userSlice';
+import { setToken } from '../redux/userSlice';
 
 const CheckPassword = () => {
   const [data,setData] = useState({
@@ -19,7 +19,7 @@ const CheckPassword = () => {
   const dispatch = useDispatch()
 
   useEffect(()=>{
-    if(!location?.state?.name){
+    if(!location.state.name){
       navigate('/email')
     }
   },[])
