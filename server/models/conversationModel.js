@@ -15,6 +15,11 @@ const messageSchema = new mongoose.Schema({
     seen:{
         type: Boolean,
         default: false
+    },
+    msgByUserId : {
+        type : mongoose.Schema.ObjectId,
+        required : true,
+        ref : 'User'
     }
 },{
     timestamps: true
@@ -25,12 +30,12 @@ const conversationSchema = new mongoose.Schema({
         required: true,
         ref: 'User'
     },
-    reciever:{
+    receiver:{
         type: mongoose.Schema.ObjectId,
         required: true,
          ref: 'User'
     },
-    message:[
+    messages:[
         {
             type: mongoose.Schema.ObjectId,
             ref: "Message"
@@ -39,11 +44,11 @@ const conversationSchema = new mongoose.Schema({
 },{
     timestamps: true
 })
-const messageModel = mongoose.model('Message', messageSchema);
-const conversationModel = mongoose.model('Conversation', conversationSchema)
+const MessageModel = mongoose.model('Message', messageSchema);
+const ConversationModel = mongoose.model('Conversation', conversationSchema)
 
 module.exports = {
-    messageModel,
-    conversationModel
+    MessageModel,
+    ConversationModel
 }
 

@@ -3,8 +3,9 @@ const cors = require("cors");
 require('dotenv').config(); 
 const connectDB = require("./config/connectdb");
 const router = require("./routes/index")
-const app = express();
+// const app = express();
 const cookiesParser = require("cookie-parser");
+const {app, server} = require("./socket/index")
 app.use(cors({
     origin: process.env.FRONTEND_URL, // Allow the frontend URL
     credentials: true, // Allow cookies and authorization headers
@@ -20,7 +21,7 @@ app.use(cookiesParser());
 // api endpoints
 app.use('/api', router);
 connectDB().then(()=>{
-    app.listen(port, (()=>{
+    server.listen(port, (()=>{
         console.log('server running connect', port);
     }))
 })
